@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="placeHolderConfigForMailService" class="org.springframework.beans.fact
+ory.config.PlaceholderConfigurerSupport">
+        <property name="location" value="classpath:mail-server.properties"/>
+</bean>
+
+<bean name="mailsession-bean" class="main.java.service.mail.MailSession"
+                init-method="establishSession">
+        <property name="config" ref="mailserver-bean"/>
+</bean>
+
+<bean name="mailserver-bean" class="main.java.service.mail.MailServerConfig">
+        <property name="mailConfig">
+        <props>
+                <prop key="from">"${mail_from}"</prop>
+                <prop key="cc">"${mail_cc}"</prop>
+                <prop key="smtphost">"${mail_smtphost}"</prop>
+        </props>
+        </property>
+</bean>
+
+<bean name="log-bean" class="main.java.service.mail.MailDirector.MailLogger">
+        <constructor-arg value="true"/>
+        <!-- this enables DEBUG for mail service -->
+</bean>
+</beans>

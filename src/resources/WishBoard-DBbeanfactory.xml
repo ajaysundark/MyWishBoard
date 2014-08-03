@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="placeHolderConfigForDBService" class="org.springframework.beans.factor
+y.config.PlaceholderConfigurerSupport">
+        <property name="location" value="classpath:db-connect.properties"/>
+</bean>
+
+<bean name="dbconnection-bean" class="main.java.service.db.SQLConnectionConfig">
+
+        <property name="host" value="${db-connecthost}"/>
+        <property name="port" value="${db-connectport}"/>
+        <property name="instance" value="${db-instance}"/>
+        <property name="user" value="${db-user}"/>
+        <property name="password" value="${db-password}"/>
+</bean>
+
+<bean name="log-bean" class="main.java.service.db.DBConnector.DBLogger">
+ <constructor-arg value="true"/>
+ <!-- this enables DEBUG for db service -->
+</bean>
+
+</beans>
