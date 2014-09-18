@@ -7,18 +7,17 @@ import main.java.ifs.ConnectionConfig;
  *
  */
 public class SQLConnectionConfig implements ConnectionConfig{
+	
+		private static final String driver = "org.sqlite.JDBC";
+    	private String filename = "wishboard.db";
 
-        private static final String connUrlPrefx = "jdbc:oracle:thin";
-        private String host = new String();
-        private String port = new String();
-        private String instance = new String();
+        private static final String connUrlPrefx = "jdbc:sqlite";
         private String sqlUser = new String();
         private String sqlPassword = new String();
 
-        private String connectionURL = new String();
+        private String connectionURL = connUrlPrefx+":"+filename;;
 
         public SQLConnectionConfig() {
-                connectionURL=connUrlPrefx+"@"+host+":"+port+":"+instance;
         }
 
         public String getConnectionURL() {
@@ -33,22 +32,11 @@ public class SQLConnectionConfig implements ConnectionConfig{
                 return connUrlPrefx;
         }
 
-        public void setHost(String host) {
-                this.host = host;
-        }
-
-        public void setPort(String port) {
-                this.port = port;
-        }
-
-        public void setInstance(String instance) {
-                this.instance = instance;
-        }
-
         public void setSqlUser(String sqlUser) {
                 this.sqlUser = sqlUser;
         }
 
+        //User is obsolete now as we are using SQLite3
         public String getUser() {
                 return sqlUser;
         }
@@ -57,8 +45,21 @@ public class SQLConnectionConfig implements ConnectionConfig{
                 this.sqlPassword = sqlPassword;
         }
 
+        //Password is obsolete now as we are using SQLite3
         public String getPassword() {
                 return sqlPassword;
         }
+
+		public String getDriver() {
+			return driver;
+		}
+
+		public void setFileName(String fileName) {
+			this.filename = fileName;
+		}
+		
+		public String getFileName() {
+			return filename;
+		}
 
 }
