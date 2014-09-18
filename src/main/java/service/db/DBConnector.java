@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class DBConnector {
-        private final String oradriver = "oracle.jdbc.driver.OracleDriver";
+        
         private WishLogger myLogger = null;
 
         private ApplicationContext dbContainer = null;
@@ -28,20 +28,26 @@ public class DBConnector {
                 ConnectionConfig config = (ConnectionConfig) dbContainer.getBean
 ("dbconnection-bean");
 
+                String driver = config.getDriver();
                 String connectionURL = config.getConnectionURL();
-                String user = config.getUser();
-                String password = config.getPassword();
-
+                
+                /**
+                 * No username and password since we changed to SQLite now!
+                 */
+                
+                //String user = config.getUser(); 
+                //String password = config.getPassword();
+                
                 if(!connectionURL.isEmpty()) {
                         try {
-                                Class.forName(oradriver);
-                                myLogger.logDebug("Oracle Driver loaded.");
+                                Class.forName(driver);
+                                myLogger.logDebug("Database Driver loaded.");
                                 myLogger.logDebug("Connecting to DB...");
-                                dbConnection = DriverManager.getConnection(connectionURL, user, password);
+                                dbConnection = DriverManager.getConnection(connectionURL);
                                 myLogger.log("Connected to DB.");
                                 return true;
                         } catch (ClassNotFoundException NotFound) {
-                                myLogger.logError("Oracle Driver not found", NotFound);
+                                myLogger.logError("Driver not found : [ " + driver + " ]", NotFound);
                                 return false;
                         } catch (SQLException sqlEx) {
                                 myLogger.logError("Connection to "+connectionURL
