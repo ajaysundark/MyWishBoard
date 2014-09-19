@@ -9,12 +9,9 @@ y.config.PlaceholderConfigurerSupport">
 </bean>
 
 <bean name="dbconnection-bean" class="main.java.service.db.SQLConnectionConfig">
-
-        <property name="host" value="${db-connecthost}"/>
-        <property name="port" value="${db-connectport}"/>
-        <property name="instance" value="${db-instance}"/>
-        <property name="user" value="${db-user}"/>
-        <property name="password" value="${db-password}"/>
+		<constructor-arg value="${db-jdbcdriver}"/>
+		<property name="fileName" value="${db-filename}"/>
+		<property name="tableName" value="${db-tablename}"/> 
 </bean>
 
 <bean name="log-bean" class="main.java.service.db.DBConnector.DBLogger">

@@ -8,46 +8,20 @@ import main.java.ifs.ConnectionConfig;
  */
 public class SQLConnectionConfig implements ConnectionConfig{
 	
-		private static final String driver = "org.sqlite.JDBC";
-    	private String filename = "wishboard.db";
+		private String driver;
+    	private String fileName = "wishboard.db";
+    	private String tableName = "birthday";
 
-        private static final String connUrlPrefx = "jdbc:sqlite";
-        private String sqlUser = new String();
-        private String sqlPassword = new String();
+		private final String connUrlPrefx = "jdbc:sqlite";
 
-        private String connectionURL = connUrlPrefx+":"+filename;;
+        private String connectionURL = connUrlPrefx+":"+fileName;;
 
-        public SQLConnectionConfig() {
+        public SQLConnectionConfig(String driver) {
+        	this.driver = driver;
         }
 
         public String getConnectionURL() {
                 return connectionURL;
-        }
-
-        public void setConnectionURL(String connectionURL) {
-                this.connectionURL = connectionURL;
-        }
-
-        public static String getConnurlprefx() {
-                return connUrlPrefx;
-        }
-
-        public void setSqlUser(String sqlUser) {
-                this.sqlUser = sqlUser;
-        }
-
-        //User is obsolete now as we are using SQLite3
-        public String getUser() {
-                return sqlUser;
-        }
-
-        public void setSqlPassword(String sqlPassword) {
-                this.sqlPassword = sqlPassword;
-        }
-
-        //Password is obsolete now as we are using SQLite3
-        public String getPassword() {
-                return sqlPassword;
         }
 
 		public String getDriver() {
@@ -55,11 +29,31 @@ public class SQLConnectionConfig implements ConnectionConfig{
 		}
 
 		public void setFileName(String fileName) {
-			this.filename = fileName;
+			this.fileName = fileName;
 		}
 		
 		public String getFileName() {
-			return filename;
+			return fileName;
+		}
+
+        public String getTableName()
+		{
+			return tableName;
+		}
+
+		public void setTableName(String tablename)
+		{
+			this.tableName = tablename;
+		}
+
+		public String getUser() {
+			// is not applicable for SQLite3
+			return null;
+		}
+
+		public String getPassword() {
+			// is not applicable for SQLite3
+			return null;
 		}
 
 }
