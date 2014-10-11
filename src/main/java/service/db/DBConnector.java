@@ -21,10 +21,10 @@ public class DBConnector
 
 	public DBConnector() {
 		dbContainer = new ClassPathXmlApplicationContext("WishBoard-DBbeanfactory.xml");
-		myLogger = (WishLogger) dbContainer.getBean("log-bean");
+		myLogger = (DBLogger) dbContainer.getBean("log-bean");
 	}
 
-	public boolean initConnection()
+	private boolean initConnection()
 	{
 		myLogger.logDebug("Trying to establish Connection to DB :");
 		ConnectionConfig config = (ConnectionConfig) dbContainer.getBean("dbconnection-bean");
@@ -69,7 +69,12 @@ public class DBConnector
 
 	public Connection getDBConnection()
 	{
-		return dbConnection;
+		synchronized(this)
+		{
+			if(dbConnection==null) { initConnection(); }
+			return dbConnection;
+		}
+		
 	}
 
 	public boolean terminateConnection()
@@ -91,10 +96,21 @@ public class DBConnector
 		return myLogger;
 	}
 
-	public class DBLogger extends WishLogger
+	private class DBLogger extends WishLogger
 	{
+
 		public DBLogger(boolean debug) {
-			super(debug);
+			super._DEBUG = debug;
+		}
+
+		@Override
+		public void logDebug(String log)
+		{
+			if (_DEBUG) {
+                    System.out.println("------------[DBConnector Debug]------------");
+                    System.out.println(log);
+                    System.out.println("------------[DBConnector Debug]------------");
+            }
 		}
 	}
 }

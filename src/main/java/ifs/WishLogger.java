@@ -4,10 +4,6 @@ public abstract class WishLogger {
 
         public boolean _DEBUG = false;
 
-        public WishLogger(boolean debug) {
-                this._DEBUG=debug;
-        }
-
         public void logError(String log, Exception e) {
                 System.err.println("------------[Error]------------");
                 System.err.println(log);
@@ -21,13 +17,7 @@ public abstract class WishLogger {
                 System.err.println("------------[Error]------------");
         }
 
-        public void logDebug(String log) {
-                if (_DEBUG) {
-                        System.out.println("------------[Debug]------------");
-                        System.out.println(log);
-                        System.out.println("------------[Debug]------------");
-                }
-        }
+        public abstract void logDebug(String log);
 
         public void log(String log) {
                 System.out.println(log);
