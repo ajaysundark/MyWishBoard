@@ -1,4 +1,4 @@
-package main.java.service.db;
+package service.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,9 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.core.ColleagueBuilder;
-import main.java.core.ColleagueVO;
-import main.java.ifs.WishLogger;
+import core.ColleagueBuilder;
+import core.ColleagueVO;
+import ifs.WishLogger;
 
 public class BirthdayFetcher
 {

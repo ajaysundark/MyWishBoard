@@ -1,4 +1,4 @@
-package main.java.service.mail;
+package service.mail;
 
 import java.util.Properties;
 

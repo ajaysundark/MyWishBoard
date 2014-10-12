@@ -1,11 +1,11 @@
-package main.java.service.db;
+package service.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import main.java.ifs.ConnectionConfig;
-import main.java.ifs.WishLogger;
+import ifs.ConnectionConfig;
+import ifs.WishLogger;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

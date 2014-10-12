@@ -1,4 +1,4 @@
-package main.java.ifs;
+package ifs;
 
 public abstract class WishLogger
 {

@@ -19,6 +19,10 @@ ory.config.PlaceholderConfigurerSupport">
                 <prop key="from">"${mail_from}"</prop>
                 <prop key="cc">"${mail_cc}"</prop>
                 <prop key="smtphost">"${mail_smtphost}"</prop>
+                <prop key="user">"${mail_user}"</prop>
+                <prop key="pwd">"${mail_pwd}"</prop>
+                <prop key="img">"${mail_wish_img}"</prop>
+                <prop key="regards">"${mail_regards}"</prop>
         </props>
         </property>
 </bean>

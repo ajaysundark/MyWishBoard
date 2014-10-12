@@ -1,4 +1,4 @@
-package main.java.client;
+package client;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -6,9 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import main.java.core.ColleagueBuilder;
-import main.java.core.ColleagueVO;
-import main.java.service.db.BirthdayFetcher;
+import core.ColleagueBuilder;
+import core.ColleagueVO;
+import service.db.BirthdayFetcher;
 
 /**
  * @author asundark
@@ -16,15 +16,9 @@ import main.java.service.db.BirthdayFetcher;
  */
 public class WishClient {
 
-        /**
-         * @param args
-         */
         public static void main(String[] args) {
 
-        		/*
-        		 * Sample DB entries
-        		 * */
-        		 
+        		// Sample DB entries
         		 BirthdayFetcher fetcher = new BirthdayFetcher();
         		 
         		 
@@ -44,7 +38,7 @@ public class WishClient {
 					daphne = wrapToColleague("Daphne", "Blake", "09/01/1982", "TheBlonde", "404309", "daphne.blake@hannabarbera.org", "Caravan09");
 					shaggy = wrapToColleague("Shaggy", "Roggers", "29/3/1980", "TheBestPal", "404313", "shaggy.roggers@hannabarbera.org", "Caravan13");
 					scooby = wrapToColleague("Scooby", "Doo", "07/09/1987", "TheHero", "404314", "scooby.doo@hannabarbera.org", "Caravan14");
-					scrappy = wrapToColleague("Scrappy", "Doo", "10/11/1992", "TheBold", "404315", "scrappy.doo@hannabarbera.org", "Caravan15");
+					scrappy = wrapToColleague("Scrappy", "Doo", "11/10/1992", "TheBold", "404315", "scrappy.doo@hannabarbera.org", "Caravan15");
 					
 					fetcher.addColleagueToDB(velma);
 					fetcher.addColleagueToDB(fred);

@@ -1,6 +1,6 @@
-package main.java.service.db;
+package service.db;
 
-import main.java.ifs.ConnectionConfig;
+import ifs.ConnectionConfig;
 
 /**
  * @author asundark
