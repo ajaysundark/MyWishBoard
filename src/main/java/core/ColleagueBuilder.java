@@ -1,9 +1,10 @@
 package main.java.core;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ColleagueBuilder {
 
+		private String firstName;
         private String lastName;
         private Date dob;
         private String designation;
@@ -21,7 +22,7 @@ public class ColleagueBuilder {
                 return this;
         }
 
-        public ColleagueBuilder addEmaidId(String email) {
+        public ColleagueBuilder addEmailId(String email) {
                 this.email = email;
                 return this;
         }
@@ -37,13 +38,18 @@ public class ColleagueBuilder {
         }
 
         public ColleagueBuilder addDOB(Date dob) {
-                this.dob  = dob;
+                this.dob = dob;
                 return this;
         }
 
         public ColleagueBuilder addLastName(String lastName) {
                 this.lastName = lastName;
                 return this;
+        }
+        
+        public ColleagueBuilder addFirstName(String firstName) {
+        	this.firstName = firstName;
+        	return this;
         }
 
         public ColleagueVO build() {
@@ -53,6 +59,7 @@ public class ColleagueBuilder {
         }
 
         private void addFieldsToVO(ColleagueVO colleague) {
+        		colleague.setFirst_name(this.firstName);
                 colleague.setLast_name(this.lastName);
                 colleague.setDob(this.dob);
                 colleague.setDesignation(this.designation);

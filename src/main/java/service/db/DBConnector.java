@@ -16,19 +16,19 @@ public class DBConnector
 	private WishLogger myLogger = null;
 
 	private ApplicationContext dbContainer = null;
-
-	private Connection dbConnection;
+	private ConnectionConfig config = null;
+	private Connection dbConnection = null;
 
 	public DBConnector() {
 		dbContainer = new ClassPathXmlApplicationContext("WishBoard-DBbeanfactory.xml");
+		config = (SQLConnectionConfig) dbContainer.getBean("dbconnection-bean");
 		myLogger = (DBLogger) dbContainer.getBean("log-bean");
 	}
 
 	private boolean initConnection()
 	{
 		myLogger.logDebug("Trying to establish Connection to DB :");
-		ConnectionConfig config = (ConnectionConfig) dbContainer.getBean("dbconnection-bean");
-
+		
 		String driver = config.getDriver();
 		String connectionURL = config.getConnectionURL();
 
@@ -74,7 +74,6 @@ public class DBConnector
 			if(dbConnection==null) { initConnection(); }
 			return dbConnection;
 		}
-		
 	}
 
 	public boolean terminateConnection()
@@ -91,6 +90,11 @@ public class DBConnector
 		return true;
 	}
 
+	public String getTableName()
+	{
+		return config.getTableName();
+	}
+	
 	public WishLogger getMyLogger()
 	{
 		return myLogger;

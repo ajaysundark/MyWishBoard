@@ -1,7 +1,7 @@
 package main.java.ifs;
 
-public abstract class WishLogger {
-
+public abstract class WishLogger
+{
         public boolean _DEBUG = false;
 
         public void logError(String log, Exception e) {
